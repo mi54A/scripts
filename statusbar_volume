@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Show volume level openbsd, used for slstatus.
+
+VOLUME_ICON=" "
+MUTE_ICON=""
+
+mute=$(sndioctl -n output.mute)
+
+volume=$(sndioctl -n output.level)
+
+if [ "$mute" = 1 ]
+then
+    printf " %s\n" "$MUTE_ICON"
+else
+    printf " %s %.2f\n" "${VOLUME_ICON}" "${volume}"
+fi
+
