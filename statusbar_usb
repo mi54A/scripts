@@ -6,7 +6,7 @@ USB_ICON=""
 # Get mounted drives.
 MOUNTED=$(df | awk -v ORS=' ' -v FS="/" '/vol/{ if ($5) print $5 }')
 
-if [ "${MOUNTED}" ]
+if [ -n "${MOUNTED}" ]
 then
     printf  " %s %s"  "${USB_ICON}" "${MOUNTED}"
 fi
